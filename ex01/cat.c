@@ -6,7 +6,7 @@
 /*   By: hshimizu <hshimizu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:51:55 by hshimizu          #+#    #+#             */
-/*   Updated: 2023/03/23 22:26:11 by hshimizu         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:39:24 by hshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,43 @@ int	stream_stdout(int stream)
 	return (size != 0);
 }
 
+void	print_error(char *a, char *b, char *c)
+{
+ //  argv[0], argv[i], strerror(errno)
+	printf("%s: %s: %s\n", a, b, c);
+}
+
+void	cat(int size, char *files_path[])
+{
+}
+
+void	cat_no_args(void)
+{
+	while (1)
+		if (!stream_stdout(STDIN_FILENO))
+			break ;
+}
+
 int	main(int argc, char *argv[])
 {
-	int	i;
-	int	stream;
+cat_no_args();
+	// int		stream;
+	// char	**_argv;
 
-	stream = STDIN_FILENO;
-	i = 1;
-	while (argc == 1 || i < argc)
-	{
-		if (1 < argc)
-			stream = open(argv[i], O_RDONLY);
-		if (stream == -1)
-			printf("%s: %s: %s\n", argv[0], argv[i], strerror(errno));
-		else
-		{
-			if (!stream_stdout(stream))
-				break ;
-			if (1 < argc)
-				close(stream);
-		}
-		i++;
-	}
+	// _argv = argv;
+	// while (1)
+	// 	stream = STDIN_FILENO;
+	// {
+	// 	if (1 < argc)
+	// 		stream = open(argv[i], O_RDONLY);
+	// 	if (stream == -1)
+	// 		else
+	// 		{
+	// 			stream_stdout(stream);
+	// 			close(stream);
+	// 		}
+	// 	if (1 < argc)
+	// 		i++;
+	// }
 	return (0);
 }
